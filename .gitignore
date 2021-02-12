@@ -348,3 +348,14 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+# Mina
+*.ini
+settings.ini
+/settings.ini
+/*.ini
+old/*
+/old/*
+/old
+Work/*
+/Work/*
+/work
