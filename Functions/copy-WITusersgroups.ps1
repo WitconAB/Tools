@@ -41,8 +41,8 @@ function copy-WITusersgroups
     {
     $Sourcegroups=@()
     $Destgroups=@()
-    $Sourcegroups+=Get-ADUser $SourceSam -Property MemberOf | Select -ExpandProperty MemberOf | Get-ADGroup | Select -ExpandProperty Name
-    $Destgroups+=Get-ADUser $DestinationSam -Property MemberOf | Select -ExpandProperty MemberOf | Get-ADGroup | Select -ExpandProperty Name
+    $Sourcegroups+=Get-ADUser $SourceSam -Property MemberOf | Select -ExpandProperty MemberOf | Get-ADGroup | Select -ExpandProperty SamAccountName
+    $Destgroups+=Get-ADUser $DestinationSam -Property MemberOf | Select -ExpandProperty MemberOf | Get-ADGroup | Select -ExpandProperty SamAccountName
     $compgroupsAdd=Compare-Object $Sourcegroups -DifferenceObject $Destgroups|where Sideindicator -eq '<=' |select -ExpandProperty Inputobject
     $compgroupsDelete=Compare-Object $Sourcegroups -DifferenceObject $Destgroups|where Sideindicator -eq '=>' |select -ExpandProperty Inputobject
     Write-Host "Groups added" 
